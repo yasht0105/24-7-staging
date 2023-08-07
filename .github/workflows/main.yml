@@ -10,7 +10,10 @@ jobs:
     
     env:
       WEBHOOK_URL: ${{ secrets.WEBHOOK }}
-    
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
