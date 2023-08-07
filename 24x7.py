@@ -1,9 +1,10 @@
+import os
 import time
 import requests
 import paramiko
 import json
 
-webhook_url = "https://hooks.slack.com/services/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"
+webhook_url = os.environ['WEBHOOK_URL']
 icon_emoji = ":ghost:"
 
 def send_slack_message(webhook_url, message, icon_emoji=":ghost:"):
