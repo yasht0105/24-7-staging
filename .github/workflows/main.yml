@@ -25,6 +25,6 @@ jobs:
         pip install requests
         pip install paramiko
     
-    - name: Run Selenium script
+    - name: Run staging script
       run: |
         python 24x7.py
