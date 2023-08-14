@@ -31,9 +31,9 @@ def check_stream_status(api_url):
 
         # Check if the status is "broadcasting" and webRTCViewerCount is 1
         if status == "broadcasting" and webRTCViewerCount == 1:
-            print("Stream is broadcasting with 1 WebRTC viewer.")
+            print("Stream is broadcasting with 1 WebRTC viewer in 24x7 staging environment")
         else:
-            message = "Stream is not broadcasting or there is no viewer"
+            message = "Stream is not broadcasting or there is no viewer in 24x7 staging environment"
             send_slack_message(webhook_url, message, icon_emoji)
 
         return True
@@ -66,10 +66,10 @@ def check_server_for_errors(server_ip, username, password):
             print("Error files found:")
             for file in error_files:
                 print(file.strip())
-            message = "The crash log or dump file is found on the server. Please check the logs"
+            message = "The crash log or dump file is found on the server in 24x7 staging enviornment. Please check the logs"
             send_slack_message(webhook_url, message, icon_emoji)
         else:
-            print("No error files found.")
+            print("No error files found")
 
     except paramiko.AuthenticationException as e:
         print(f"Authentication failed: {e}")
