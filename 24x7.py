@@ -55,7 +55,7 @@ def check_server_for_errors(server_ip, username, password):
         client.connect(server_ip, username=username, password=password)
 
         # Check for error files
-        file_extensions = [".piderr", ".hprof"]
+        file_extensions = [".log", ".hprof"]
         error_files = []
 
         for ext in file_extensions:
