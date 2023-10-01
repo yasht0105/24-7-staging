@@ -23,6 +23,8 @@ def check_stream_status(api_url):
     try:
         # Make the GET request to the API
         response = requests.get(api_url)
+        response.raise_for_status()  # Raise an HTTPError for bad status codes
+
         response_data = response.json()
 
         # Extract the required fields
@@ -31,21 +33,33 @@ def check_stream_status(api_url):
 
         # Check if the status is "broadcasting" and webRTCViewerCount is 1
         if status == "broadcasting" and webRTCViewerCount == 1:
-            print("Stream is broadcasting with 1 WebRTC viewer in 24x7 staging environment")
+            print("Stream is broadcasting with 1 WebRTC viewer.")
         else:
-            message = "Stream is not broadcasting or there is no viewer in 24x7 staging environment"
+            message = "Stream is not broadcasting or there is no viewer"
             send_slack_message(webhook_url, message, icon_emoji)
-
-        return True
+            return False
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the API call: {e}")
+        message = "Error making the API call"
+        send_slack_message(webhook_url, message, icon_emoji)
+        return False
+
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e}")
+        message = "HTTP error when making the API call"
+        send_slack_message(webhook_url, message, icon_emoji)
+        return False
+
     except ValueError as e:
         print(f"Error: {e}")
+        return False
+
     except Exception as e:
         print(f"Unexpected error: {e}")
+        return False
 
-    return False
+    return True
 
 def check_server_for_errors(server_ip, username, password):
     try:
