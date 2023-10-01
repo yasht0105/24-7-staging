@@ -81,7 +81,7 @@ def check_server_for_errors(server_ip, username, password):
         client.close()
 
 if __name__ == "__main__":
-    api_url = "http://ovh36.antmedia.io:5080/LiveApp/rest/v2/broadcasts/test"
+    api_url = "http://ovh36.antmedia.io:5080/LiveApp/rest/v2/broadcasts/24x7test"
     if check_stream_status(api_url):
         # Replace the following with server details
         server_ip = os.environ['SERVER_IP']
