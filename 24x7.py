@@ -42,13 +42,13 @@ def check_stream_status(api_url):
     except requests.exceptions.RequestException as e:
         print(f"Error making the API call: {e}")
         message = "Error making the API call"
-        send_slack_message(webhook_url, message, icon_emoji)
+        #send_slack_message(webhook_url, message, icon_emoji)
         return False
 
     except requests.exceptions.HTTPError as e:
         print(f"HTTP error: {e}")
         message = "HTTP error when making the API call"
-        send_slack_message(webhook_url, message, icon_emoji)
+        #send_slack_message(webhook_url, message, icon_emoji)
         return False
 
     except ValueError as e:
