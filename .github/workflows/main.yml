@@ -27,7 +27,7 @@ jobs:
       run: |
         pip install requests
         pip install paramiko
-    
+        
     - name: Run staging script
       run: |
         python 24x7.py
