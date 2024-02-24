@@ -1,4 +1,4 @@
-name: Python 24x7 script
+name: Python 24x7 script Part1
 
 on: 
      schedule:
